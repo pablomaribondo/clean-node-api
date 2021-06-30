@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "test": "npx jest --passWithNoTests --no-cache --runInBand",
-    "test:watch": "yarn test -- --watch ",
-    "test:staged": "yarn test -- --findRelatedTests",
-    "test:ci": "yarn test -- --coverage",
+    "test:watch": "yarn test --watch ",
+    "test:staged": "yarn test --findRelatedTests",
+    "test:ci": "yarn test --coverage",
     "prepare": "husky install"
   },
   "devDependencies": {
