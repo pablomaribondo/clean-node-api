@@ -1,5 +1,9 @@
 import { SignUpController } from './signpup'
-import { MissingParamError, InvalidParamError, ServerError } from '../../errors'
+import {
+  MissingParamError,
+  InvalidParamError,
+  ServerError
+} from '../../errors'
 import {
   EmailValidator,
   AccountModel,
@@ -231,6 +235,29 @@ describe('SignUp Controller', () => {
       name: 'any_name',
       email: 'any_email@mail.com',
       password: 'any_password'
+    })
+  })
+
+  test('Should return 200 if valid data is provided', () => {
+    const { sut } = makeSut()
+
+    const httpRequest = {
+      body: {
+        name: 'valid_name',
+        email: 'valid_email@mail.com',
+        password: 'valid_password',
+        passwordConfirmation: 'valid_password'
+      }
+    }
+
+    const httpResponse = sut.handle(httpRequest)
+
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual({
+      id: 'valid_id',
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: 'valid_password'
     })
   })
 })
